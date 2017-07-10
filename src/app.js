@@ -38,6 +38,7 @@ room.on('message', (message) =>
 // broadcast message every 2 seconds
 
 setInterval(() => room.broadcast('hey everyone!'), 2000)
+
 function repo() {
   return 'ipfs/pubsub-demo/' + Math.random()
 }

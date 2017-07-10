@@ -1,5 +1,9 @@
 # IPFS Pubsub Room Demo
 
+Links:
+
+- [Demo script](SCRIPT.md)
+
 ## Pre-requisites
 
 * Have Node.js version 6 or greater installed
