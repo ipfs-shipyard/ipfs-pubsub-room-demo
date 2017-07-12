@@ -104,18 +104,6 @@ In the app, we now need to create an IPFS node:
 Const IPFS = require('ipfs')
 const ipfs = new IPFS({
   repo: repo(),
-  config: {
-    Addresses: {
-      Swarm: [
-        '/libp2p-webrtc-star/dns4/star-signal.cloud.ipfs.team/wss'
-      ]
-    },
-    Discovery: {
-      webRTCStar: {
-        Enabled: true
-      }
-    }
-  },
   EXPERIMENTAL: {
     pubsub: true
   }
@@ -125,6 +113,10 @@ ipfs.once(‘ready’, () => ipfs.id((err, peerInfo) => {
   if (err) { throw err }
   console.log(‘IPFS node started and has ID ‘ + peerInfo.id)
 })
+
+function repo () {
+  return 'ipfs/pubsub-demo/' + Math.random()
+}
 ```
 
 ## Create pubsub room
