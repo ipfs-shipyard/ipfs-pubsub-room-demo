@@ -3,6 +3,7 @@
 Links:
 
 - [Demo script](SCRIPT.md)
+- [Demo video](https://www.youtube.com/watch?v=Nv_Teb--1zg)
 
 ## Pre-requisites
 
