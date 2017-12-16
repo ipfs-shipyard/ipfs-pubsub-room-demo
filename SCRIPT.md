@@ -47,6 +47,8 @@ And run `npm init` to initialise our application package.json manifest.
 
 Next you’ll need to install the http-server so that we can serve some static files.
 
+`npm install http-server --save`
+
 We can now create a start script in out package.json that starts our HTTP server.
 
 ## Create a static page
@@ -65,6 +67,9 @@ Now we need to create a really simple static webpage that the only thing it does
 ```
 
 We can now start our web server and try to load our webpage.
+
+Add the following entry to `package.json` section name `script`.
+`"start": "http-server -c-1 -p 12345 public",`
 
 It says the javascript file was not found. Let’s take care of that now.
 
@@ -101,7 +106,7 @@ $ npm install ipfs —save
 In the app, we now need to create an IPFS node:
 
 ```js
-Const IPFS = require('ipfs')
+const IPFS = require('ipfs')
 const ipfs = new IPFS({
   repo: repo(),
   EXPERIMENTAL: {
@@ -109,10 +114,10 @@ const ipfs = new IPFS({
   }
 })
 
-ipfs.once(‘ready’, () => ipfs.id((err, peerInfo) => {
+ipfs.once(`ready`, () => ipfs.id((err, peerInfo) => {
   if (err) { throw err }
-  console.log(‘IPFS node started and has ID ‘ + peerInfo.id)
-})
+  console.log(`IPFS node started and has ID ` + peerInfo.id)
+}))
 
 function repo () {
   return 'ipfs/pubsub-demo/' + Math.random()
@@ -161,7 +166,7 @@ room.on(‘peer joined’, (peer) => room.sendTo(peer, 'Welcome ' + peer + '!')
 In order for a node to receive these messages, we need to listen to the `message` event.
 
 ```js
-room.on(‘message’, (message) => console.log('message from '' + message.from + ': ' + message.data.toString())
+room.on(‘message’, (message) => console.log('message from ' + message.from + ': ' + message.data.toString())
 ```
 
 Let’s see this in action.
